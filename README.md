@@ -1,2 +1,1 @@
-# Deep-Learning
-Dog-Breed Classifier Project
+#Dog-Breed Classifier Project
