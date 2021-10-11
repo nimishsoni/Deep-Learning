@@ -10,6 +10,8 @@ We break the notebook into separate steps.
 - Step 2: Detect Dog                                                              Accuracy-86%
 Used VGG 16 pretrained model for detecting Dogs and Human faces for Step 1 and 2.
 ![image](https://user-images.githubusercontent.com/73768660/136780939-200769d9-6116-49bb-885f-664257ef1270.png)
+ I also tried pre-trained ResNet-50 and Inception_V3 models for classification. 
+
 
 - Step 3: Create a CNN to Classify Dog Breeds (from Scratch)                      Accuracy-15%
 
@@ -70,18 +72,6 @@ Hello Human
 ![image](https://user-images.githubusercontent.com/73768660/136780329-1e0fbdde-2b18-45af-a45f-9a6dd33eb3f1.png)
 You Look Like a Pharaoh hound
 
-### Main CNN Model
-
-![Model Architecture]
-
-I used this architecture in the step 3 
-
- I also tried pre-trained ResNet-50 and Inception_V3 models for classification. 
-
- ## Final Prediction
- 
- 
-![Prediction](prediction.PNG)
 
 
 ## Future tasks to make my project stand out
