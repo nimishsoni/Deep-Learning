@@ -60,7 +60,9 @@ VGG(
   )
 )
 - Step 5: Testing Algorithm
+
 Final Predictions
+
 ![image](https://user-images.githubusercontent.com/73768660/136780218-eb521b3e-ec7e-4bec-bfe1-657effc64c61.png)
 This dog breed is Bullmastiff
 
