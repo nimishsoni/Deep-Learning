@@ -6,7 +6,15 @@ The code accepts any user-supplied image as input. If a dog is detected in the i
 We break the notebook into separate steps.
 - Intro
 - Step 0: Import Datasets
+ The dataset contains total of 13233 human images and 8351 dog images classified in to 133 dog breeds.
+ 
 - Step 1: Detect Humans                                                           Accuracy-96%
+In this section, we have used OpenCV's implementation of Haar feature-based cascade classifiers to detect human faces in the images.
+OpenCV provides many pre-trained face detectors, stored as XML files on github.
+- Sample Image Output
+![image](https://user-images.githubusercontent.com/73768660/137092412-65042a26-57f8-4939-8320-9538684d5344.png)
+
+
 - Step 2: Detect Dog                                                              Accuracy-86%
 Used VGG 16 pretrained model for detecting Dogs and Human faces for Step 1 and 2.
 ![image](https://user-images.githubusercontent.com/73768660/136780939-200769d9-6116-49bb-885f-664257ef1270.png)
@@ -14,9 +22,13 @@ Used VGG 16 pretrained model for detecting Dogs and Human faces for Step 1 and 2
 
 
 - Step 3: Create a CNN to Classify Dog Breeds (from Scratch)                      Accuracy-15%
+  Data Preprocessing: The training images are resized to 255 x 255 size and cropped at center to 224 x 224 size. The training data is augmented with random horizontal and vertical flips as well as rotation. Data is further normalized before being fed to convolutional layers. 
+  
+  
 
 - Step 4: Create a CNN to Classify Dog Breeds (using Transfer Learning)           Accuracy-68% 
 Here I have used pretrained VGG-16 with modifications in fully connected linear layer 2 and 3 to provide 133 classification output (instead of 1000 classes) corresponding to each dog breed. The convolutional layer features have been kept the same as for the pretrained VGG-16 model as the dog-breed dataset is similar to ImageNet dataset on which VGG is pretrained and Dog dataset are similar. 
+
 VGG(
   (classifier): Sequential(
     (0): Linear(in_features=25088, out_features=4096, bias=True)
@@ -28,6 +40,7 @@ VGG(
     (6): Linear(in_features=1000, out_features=133, bias=True)
   )
 )
+
 - Step 5: Testing Algorithm
 
 Final Predictions
@@ -43,17 +56,13 @@ You Look Like a Pharaoh hound
 
 ## Future tasks to make my project stand out
 
-### 1 AUGMENT THE TRAINING DATA
-Augmenting the training and/or validation set might help improve model performance. 
-### (DONE NOW)
-
-### 2 TURN YOUR ALGORITHM INTO A WEB APP
+### 1 TURN YOUR ALGORITHM INTO A WEB APP
 Turning the code into a web app using Flask.
 
-### 3 ADD FUNCTIONALITY FOR DOG MUTTS
+### 2 ADD FUNCTIONALITY FOR DOG MUTTS
 Currently, if a dog appears 51% German Shephard and 49% poodle, only the German Shephard breed is returned. The algorithm is currently guaranteed to fail for every mixed breed dog. Of course, if a dog is predicted as 99.5% Labrador, it is still worthwhile to round this to 100% and return a single breed; so, need to find a nice balance.
 
-### 4 EXPERIMENT WITH MULTIPLE DOG/HUMAN DETECTORS
+### 3 EXPERIMENT WITH MULTIPLE DOG/HUMAN DETECTORS
 Perform a systematic evaluation of various methods for detecting humans and dogs in images & Provide improved methodology for the face_detector and dog_detector functions.
 
 
