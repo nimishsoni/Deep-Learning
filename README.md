@@ -4,32 +4,32 @@ The code accepts any user-supplied image as input. If a dog is detected in the i
 
 ### Steps
 We break the notebook into separate steps.
-- Intro
+
 - Step 0: Import Datasets
- The dataset contains total of 13233 human images and 8351 dog images classified in to 133 dog breeds.
+  The dataset contains total of 13233 human images and 8351 dog images classified in to 133 dog breeds.
  
 - Step 1: Detect Humans                                                           Accuracy-96%
-In this section, we have used OpenCV's implementation of Haar feature-based cascade classifiers to detect human faces in the images.
-OpenCV provides many pre-trained face detectors, stored as XML files on github.
-- Sample Image Output
+ In this section, we have used OpenCV's implementation of Haar feature-based cascade classifiers to detect human faces in the images.
+ OpenCV provides many pre-trained face detectors, stored as XML files on github.
+ Sample Image Output
 ![image](https://user-images.githubusercontent.com/73768660/137092412-65042a26-57f8-4939-8320-9538684d5344.png)
 
 
 - Step 2: Detect Dog                                                              Accuracy-86%
-Used VGG 16 pretrained model for detecting Dogs and Human faces for Step 1 and 2.
-![image](https://user-images.githubusercontent.com/73768660/136780939-200769d9-6116-49bb-885f-664257ef1270.png)
+ Used VGG 16 pretrained model for detecting Dogs and Human faces for Step 1 and 2.
+ ![image](https://user-images.githubusercontent.com/73768660/136780939-200769d9-6116-49bb-885f-664257ef1270.png)
  I also tried pre-trained ResNet-50 and Inception_V3 models for classification. 
 
 
 - Step 3: Create a CNN to Classify Dog Breeds (from Scratch)                      Accuracy-15%
-  Data Preprocessing: The training images are resized to 255 x 255 size and cropped at center to 224 x 224 size. The training data is augmented with random horizontal and vertical flips as well as rotation. Data is further normalized before being fed to convolutional layers. 
+  Data Preprocessing: The training images are resized to 255 x 255 size and cropped at center to 224 x 224 size. The training data is augmented with random horizontal and      vertical flips as well as rotation. Data is further normalized before being fed to convolutional layers. 
   
   
 
 - Step 4: Create a CNN to Classify Dog Breeds (using Transfer Learning)           Accuracy-68% 
-Here I have used pretrained VGG-16 with modifications in fully connected linear layer 2 and 3 to provide 133 classification output (instead of 1000 classes) corresponding to each dog breed. The convolutional layer features have been kept the same as for the pretrained VGG-16 model as the dog-breed dataset is similar to ImageNet dataset on which VGG is pretrained and Dog dataset are similar. 
+ Here I have used pretrained VGG-16 with modifications in fully connected linear layer 2 and 3 to provide 133 classification output (instead of 1000 classes) corresponding to     each dog breed. The convolutional layer features have been kept the same as for the pretrained VGG-16 model as the dog-breed dataset is similar to ImageNet dataset on which     VGG is pretrained and Dog dataset are similar. 
 
-VGG(
+ VGG(
   (classifier): Sequential(
     (0): Linear(in_features=25088, out_features=4096, bias=True)
     (1): ReLU(inplace)
@@ -39,18 +39,18 @@ VGG(
     (5): Dropout(p=0.5)
     (6): Linear(in_features=1000, out_features=133, bias=True)
   )
-)
+ )
 
 - Step 5: Testing Algorithm
 
 Final Predictions
 
 ![image](https://user-images.githubusercontent.com/73768660/136780218-eb521b3e-ec7e-4bec-bfe1-657effc64c61.png)
-This dog breed is Bullmastiff
+  This dog breed is Bullmastiff
 
 Hello Human
 ![image](https://user-images.githubusercontent.com/73768660/136780329-1e0fbdde-2b18-45af-a45f-9a6dd33eb3f1.png)
-You Look Like a Pharaoh hound
+  You Look Like a Pharaoh hound
 
 
 
